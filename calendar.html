@@ -1,0 +1,131 @@
+<html lang=en>
+	<head>
+		<meta charset="utf-8">
+		<title>Age of Sin</title>
+		<link rel="stylesheet" type="text/css" href="basestyle.css">
+		<link rel="shortcut icon" href="LP.ico">
+		<script>
+			var holidays = {
+			  753: "Halloween: the last day of the year; a holiday dedicated to excess",
+			  101: "Hallow's Day: the first day of the year; a holiday dedicated to repose",
+			  453: "Nexus Day: a leap day; a holiday raucous celebration of nothing in particular",
+			  240: "Hekate's Deipnon: one of the four raucus feats dedicated to Hekate",
+			  626: "Hekate's Deipnon: one of the four raucus feats dedicated to Hekate",
+			  116: "Hekate's Deipnon: one of the four raucus feats dedicated to Hekate",
+			  130: "Hekate's Deipnon: one of the four raucus feats dedicated to Hekate",
+			  352: "Megalesia Festivals: the first of seven extravagent festivals dedicated to Cybele",
+			  401: "Megalesia Festivals: continuation of extravagent festivities in honour of Cybele",
+			  402: "Megalesia Festivals: continuation of extravagent festivities in honour of Cybele",
+			  403: "Megalesia Festivals: continuation of extravagent festivities in honour of Cybele",
+			  404: "Megalesia Festivals: continuation of extravagent festivities in honour of Cybele",
+			  405: "Megalesia Festivals: continuation of extravagent festivities in honour of Cybele",
+			  406: "Megalesia Festivals: the last of seven extravagent festivals dedicated to Cybele",
+			  328: "Feast of Heliogabalus: a feast celebrating Heliogabalus, Rome's only empress",
+			  332: "Hilaria Rites: the beginning of nine days of fasting in Cybele's honour",
+			  333: "Hilaria Rites: fasting in Cybele's honour continues",
+			  334: "Hilaria Rites: fasting in Cybele's honour continues",
+			  335: "Hilaria Rites: fasting in Cybele's honour continues",
+			  336: "Hilaria Rites: fasting in Cybele's honour continues",
+			  337: "Hilaria Rites: fasting in Cybele's honour continues",
+			  338: "Hilaria Rites: fasting in Cybele's honour continues",
+			  339: "Hilaria Rites: fasting in Cybele's honour continues",
+			  340: "Hilaria Rites: fasting in Cybele's honour continues",
+			  341: "Hilaria Rites: the last day of fasting for Cybele, on which scourging, whipping, and castrating rituals take place",
+			  342: "Hilaria Rites: a festival of celebration of Cybele, having concluded the fasting period",
+			  529: "Philotes Revels: a festival of the goddess Philotes, characterized as a day of sensual desire",
+			  532: "Keres Commemorations: a festival in the honour of the Keres inciting mass disobedience and rioting",
+			  533: "Keres Commemorations: the second day of the riotous Keres festival",
+			  510: "Night of Nemesis: a night-long festival in honour of the goddess Nemesis",
+			  151: "Nyx Solstice: the winter solstice and a day of celeberation for the goddess Nyx",
+			  701: "Festival of Apate: a carnival in Apate's name, marking the first day of Gluttony",
+			  525: "Hesperides Solstice: the summer solstice, dedicated to celebrating the Hesperides",
+			}
+
+			function tableCreate() {
+				var tbldiv = document.getElementById("calendar-display");
+				var tbl = document.createElement("table");
+			 	if (month_number == 6 || (month_number == 3 && !(year % 4) && !(!((year + 12) % 100) && (year+12) % 400))) {var rows = ["Slime","Mold","Smog","Blight","Special"]}
+			 	else {var rows = ["Slime","Mold","Smog","Blight"]}
+			 	columns = ["","Oizys","Achl.","Apate","Neme.","Hybr.","Hesp.","Nyx","Keres","Moir.","Eris","Phil.","Elpis","Eleos"]
+			 	var day = 1
+			  	for (var i = 0; i < rows.length + 1; i++) {
+			    	var tr = document.createElement('tr');
+						for (var j = 0; j < 14; j++) {
+			     		if (i == 0) {
+			        		var th = document.createElement('th');
+			        		th.appendChild(document.createTextNode(columns[j]));
+			        		tr.appendChild(th)
+			      		} else if (j == 0 && i > 0) {
+			        		var th = document.createElement('th');
+			        		th.appendChild(document.createTextNode(rows[i - 1]));
+			      			tr.appendChild(th)
+			  				} else if (!(j > 1 && i == 5)) {
+			 						var td = document.createElement('td');
+			      			if (((month_number + 1) * 100 + day) in holidays) {
+			      				var bt = document.createElement('input');
+			      				bt.type = 'button';
+			      				bt.className = 'numberbutton';
+			      				code = (month_number + 1) * 100 + day
+			      				ems = 2 - 2 * (rows.length - 4)
+			      				bt.setAttribute("onclick","displayChange("+code+","+ems+")");
+			      				bt.value = day;
+			      				td.appendChild(bt)}
+			      			else {td.appendChild(document.createTextNode(day))}
+			      			tr.appendChild(td);
+			      			day += 1
+			      		}
+			      	}
+			    	tbl.appendChild(tr);
+			  	}
+			  	tbldiv.appendChild(tbl);
+			}
+
+			function displayChange(code,ems) {
+				document.getElementById('display-info').innerHTML = holidays[code]
+				document.getElementById('display-info').style.paddingTop = ems+"em"
+			}
+
+			function refresh() {
+				month = ['Sloth','Lust','Envy','Greed','Pride','Wrath','Gluttony'][month_number];
+				document.getElementById("date-display").innerHTML = "Month of Queer "+month;
+				document.getElementById("year-display").innerHTML = year+" YPA";
+				document.getElementById("calendar-display").innerHTML = "";
+				document.getElementById("display-info").innerHTML = "";
+				tableCreate()
+			}
+
+			var days = Math.trunc((Date.now() / 1000 - 1320120000) / 86400)
+			var year = 0; var month = 0; var day = 0; var go = 1
+			
+			while (go) {
+				if (month == 6 || (month == 3 && !(year % 4) && !(!((year + 12) % 100) && (year+12) % 400))) {var daybreak = 53}
+				else {var daybreak = 52}
+				if (days < daybreak) {go = 0}
+				else {month += 1; days -= daybreak}
+				if (month > 6) {year += 1; month = 0}}
+			
+			var month_number = month
+			month = ["Sloth","Lust","Envy","Greed","Pride","Wrath","Gluttony"][month_number]
+		</script>
+	</head>
+	<body>
+		<h1>Age of Sin</h1>
+		<h2>By <a href="https://twitter.com/lilypatchwork">Lilypatchwork</a></h2>
+		<hr class="rule">
+		<ul class="navbar"><li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="about.html">About</a></li></ul>
+		<hr class="rule">
+		<div style="column-count: 3">
+			<div style="text-align: right"><button class="textbutton" onclick="month_number -= 1; if (month_number < 0) {year -= 1; month_number = 6}; refresh()">Backwards</button></div>
+			<p id="year-display" class="leadup"></p>
+			<button class="textbutton" onclick="month_number += 1; if (month_number > 6) {year += 1; month_number = 0}; refresh()">Forwards</button>
+		</div>
+		<p id="date-display"></p>
+		<table id="calendar-display"></table>
+		<p id="display-info"></p>
+		<script>
+			document.getElementById("date-display").innerHTML = "Month of Queer "+month
+			document.getElementById("year-display").innerHTML = year+" YPA"
+			tableCreate()
+		</script>
+	</body>
+</html>

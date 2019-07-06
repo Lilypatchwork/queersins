@@ -1,0 +1,72 @@
+<html lang=en>
+	<head>
+		<meta charset="utf-8">
+		<title>Age of Sin</title>
+		<link rel="stylesheet" type="text/css" href="basestyle.css">
+		<link rel="shortcut icon" href="LP.ico">
+		<script>
+			function validateInput() {
+				var v = document.forms["dateform"]["fname"].value
+				if (Date.parse(v)) {
+					return(convertDate(Date.parse(v)))
+				} else {
+					return ["Invalid date.",""]
+				}
+			}
+
+			function convertDate(timestamp) {
+				var days = Math.trunc((timestamp - 1320105600000) / 86400000)
+				var year = 0; var month = 0; var day = 0; var go = 1
+				
+				if (days >= 0) {
+				  while (go) {
+				    if (month == 6 || (month == 3 && !(year % 4) && !(!((year + 12) % 100) && (year+12) % 400))) {var daybreak = 53}
+  					else {var daybreak = 52}
+  					if (days < daybreak) {go = 0}
+  					else {month += 1; days -= daybreak}
+  					if (month > 6) {year += 1; month = 0}}
+				} else {
+				  month = 6; year = -1; days += 53
+				  while (go) {
+  					if (days >= 0) {go = 0}
+  					else {month -= 1; if (month < 0) {year -= 1; month = 6};
+  					if (month == 6 || (month == 3 && !(year % 4) && !(!((year + 12) % 100) && (year+12) % 400))) {days += 53}
+  					else {days += 52}}}
+				}
+
+				month = ["Sloth","Lust","Envy","Greed","Pride","Wrath","Gluttony"][month]
+				week = ["Slime","Mold","Smog","Blight",""][Math.trunc(days / 13)]
+				day = ["Oizus","Achlys","Apate","Nemesis","Hybris","Hesperides","Nyx","Keres","Moirai","Eris","Philotes","Elpis","Eleos"][days % 13]
+				if (!week) {day = {"Gluttony":"Halloween","Greed":"Nexus Day"}[month]}
+				days += 1
+
+				double = ["",days+" "+month+" "+year+" YPA"]
+				if (week) {double[0] = day+"-"+week}
+				else {double[0] = day}
+				return double
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Age of Sin</h1>
+		<h2>By <a href="https://twitter.com/lilypatchwork">Lilypatchwork</a></h2>
+		<hr class="rule">
+		<ul class="navbar"><li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="about.html">About</a></li></ul>
+		<hr class="rule">
+		<p class="leadup">Write a date to convert</p>
+		<p class="littlelead">Format is YYYY-MM-DD.</p>
+		<form name="dateform" onsubmit="upDate(validateInput()); return false">
+			<input type="text" name="fname"><br>
+			<input type="submit" value="Submit">
+		</form>
+		<p class="leadup">The date is...</p>
+		<p id="day-display"></p>
+		<p id="date-display"></p>
+		<script>
+			function upDate(duo) {
+				document.getElementById('day-display').innerHTML = duo[0];
+				document.getElementById('date-display').innerHTML = duo[1]
+			}
+		</script>
+	</body>
+</html>

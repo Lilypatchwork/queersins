@@ -1,0 +1,45 @@
+<html lang=en>
+	<head>
+	  <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lilypatchwork">
+    <meta name="twitter:creator" content="@lilypatchwork">
+    <meta name="twitter:title" content="Age of Sin">
+    <meta name="twitter:description" content="An alternative calendar of queer sins.">
+    <meta name="twitter:image" content="https://lilypatchwork.xyz/calendar/displaycard.png">
+		<meta charset="utf-8">
+		<title>Age of Sin</title>
+		<link rel="stylesheet" type="text/css" href="basestyle.css">
+		<link rel="shortcut icon" href="LP.ico">
+		<script>
+			var days = Math.trunc((Date.now() / 1000 - 1320120000) / 86400)
+			var year = 0; var month = 0; var day = 0; var go = 1
+			while (go) {
+				if (month == 6 || (month == 3 && !(year % 4) && !(!((year + 12) % 100) && (year+12) % 400))) {var daybreak = 53}
+				else {var daybreak = 52}
+				if (days < daybreak) {go = 0}
+				else {month += 1; days -= daybreak}
+				if (month > 6) {year += 1; month = 0}}
+			month = ["Sloth","Lust","Envy","Greed","Pride","Wrath","Gluttony"][month]
+			week = ["Slime","Mold","Smog","Blight",""][Math.trunc(days / 13)]
+			day = ["Oizus","Achlys","Apate","Nemesis","Hybris","Hesperides","Nyx","Keres","Moirai","Eris","Philotes","Elpis","Eleos"][days % 13]
+			if (!week) {day = {"Gluttony":"Halloween","Greed":"Nexus Day"}[month]}
+			days += 1
+		</script>
+	</head>
+	<body>
+		<h1>Age of Sin</h1>
+		<h2>By <a href="https://twitter.com/lilypatchwork">Lilypatchwork</a></h2>
+		<hr class="rule">
+		<ul class="navbar"><li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="calculator.html">Calculator</a></li><li><a href="about.html">About</a></li></ul>
+		<hr class="rule">
+		<p class="leadup">The date is</p>
+		<p id="date-display"></p>
+		<script>document.getElementById("date-display").innerHTML = days+" "+month+" "+year+" YPA"</script>
+		<p class=leadup>The day is</p>
+		<p id="day-display"></p>
+		<script>
+			if (week) {document.getElementById("day-display").innerHTML = day+"-"+week}
+			else {document.getElementById("day-display").innerHTML = day}
+		</script>
+	</body>
+</html>

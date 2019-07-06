@@ -1,0 +1,181 @@
+html {
+	background-color: black;
+	height: 100%;
+}
+
+@font-face {
+    font-family: 'Cloister';
+    src: url('CloisterBlack.ttf');
+}
+
+@font-face {
+    font-family: 'Baskerville';
+    src: url('Baskerville.ttf');
+}
+
+body {
+	background-color: black;
+	color: #8c0094;
+	font-family: "Baskerville", Serif;
+	text-align: justify;
+	max-width: 70%;
+	margin: auto;
+	min-height: 100%}
+
+hr.rule {
+	color: #8c0094;
+	border: double;
+}
+
+form {
+	text-align: center;
+	padding-top: 1em;
+}
+
+input[type=text] {
+	background-color: #8c0094;
+	color: #000000;
+	border: 0;
+	font-family: "Cloister", Serif;
+	font-weight: bolder;
+	font-size: 100%;
+	text-align: center;
+	width: 35%;
+}
+
+input[type=submit] {
+	background-color: #000000;
+	font-family: "Cloister", Serif;
+	border: 0;
+	padding-top: 0.5em;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 150%;
+	color: #cc0094;
+}
+
+#display-info {
+	width: 95%;
+	margin: auto; 
+	font-weight: bolder;
+	text-align: center;
+}
+
+.numberbutton {
+	color: #cc0094;
+ 	border: none;
+ 	background-color: inherit;
+ 	font-family: "Baskerville", Serif;
+ 	font-weight: bolder;
+	display: inline-block;
+	font-size: 100%;
+}
+
+.textbutton {
+	padding-top: 1.3em;
+	color: #cc0094;
+ 	border: none;
+ 	background-color: inherit;
+	font-family: "Cloister", Serif;
+	font-size: 250%;
+	display: inline-block;
+}
+
+ul {
+	list-style-type: none;
+	text-align: center;
+	font-weight: bolder;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	display: inline;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.leadup {
+	padding-top: 1.3em;
+	padding-bottom: 0em;
+	text-align: center;
+	font-family: "Cloister", Serif;
+	font-size: 250%}
+
+.littlelead {
+	padding-bottom: 0em;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 100%}
+
+#date-display {
+	text-align: center;
+	font-family: "Cloister", Serif;
+	font-size: 400%
+}
+
+#day-display {
+	text-align: center;
+	font-family: "Cloister", Serif;
+	font-size: 400%
+}
+
+h1 {
+	padding-top: 0.5em;
+	margin-bottom: 0.1em;
+	font-size: 500%;
+	text-align: center;
+	font-family: "Cloister", Serif}
+
+h2 {
+	font-size: 150%;
+	font-style: italic;
+	text-align: center}
+
+h3 {
+	font-size: 150%;
+	text-align: center;
+	font-family: "Cloister", Serif
+}
+
+.doubled {
+	max-width: 100%;
+	margin: auto;
+	column-count: 2;
+	column-gap: 5%}
+
+table {
+	width: 95%;
+	margin: auto;
+	border-collapse: collapse;}
+
+th {
+	padding: 1%;
+	text-align: center;
+	color: #8c0094;
+	font-family: "Cloister", Serif}
+
+td {
+	font-weight: bolder;
+	text-align: center;
+	width: 6.8%;
+}
+
+p {
+  text-align: left;
+	max-width: 95%;
+	margin: auto;
+	padding-bottom: 1%;
+	font-weight: bolder;
+	font-size: 100%;
+}
+
+@media screen and (orientation: landscape) {
+  p {
+    text-align: justify;
+    }
+}
+
+a:link, a:visited {
+	color: #cc0094;
+	text-decoration: none}
